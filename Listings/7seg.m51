@@ -1,0 +1,147 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    01/29/2024  18:11:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\7seg_button.obj TO .\Objects\7seg PRINT (.\Listings\7seg.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\7seg_button.obj (7SEG_BUTTON)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SCDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\7seg (7SEG_BUTTON)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000DH     UNIT         ?DT?7SEG_BUTTON
+            IDATA   0015H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0040H     UNIT         ?PR?QUET_LED?7SEG_BUTTON
+            CODE    08CCH     002BH     UNIT         ?PR?NUT_NHAN?7SEG_BUTTON
+            CODE    08F7H     0028H     UNIT         ?PR?_DELAY?7SEG_BUTTON
+            CODE    091FH     0022H     UNIT         ?C?LIB_CODE
+            CODE    0941H     0011H     UNIT         ?PR?MAIN?7SEG_BUTTON
+            CODE    0952H     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\7seg (7SEG_BUTTON)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?7SEG_BUTTON
+  +--> ?C_INITSEG
+
+?PR?MAIN?7SEG_BUTTON
+  +--> ?PR?_DELAY?7SEG_BUTTON
+  +--> ?PR?NUT_NHAN?7SEG_BUTTON
+  +--> ?PR?QUET_LED?7SEG_BUTTON
+
+?PR?QUET_LED?7SEG_BUTTON
+  +--> ?PR?_DELAY?7SEG_BUTTON
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2024  18:11:51  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\7seg (7SEG_BUTTON)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        7SEG_BUTTON
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:0008H         PUBLIC        Mang
+  C:08FFH         PUBLIC        _delay
+  B:00B0H.0       PUBLIC        P3_0
+  B:00B0H.1       PUBLIC        P3_1
+  B:00B0H.6       PUBLIC        P3_6
+  B:00B0H.7       PUBLIC        P3_7
+  C:0941H         PUBLIC        main
+  D:0012H         PUBLIC        dem
+  C:088CH         PUBLIC        quet_led
+  C:08CCH         PUBLIC        nut_nhan
+  D:0013H         PUBLIC        a
+  D:0014H         PUBLIC        b
+  -------         PROC          L?0024
+  -------         ENDPROC       L?0024
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:08FFH         LINE#         11
+  C:08FFH         LINE#         13
+  C:091EH         LINE#         14
+  -------         ENDPROC       _DELAY
+  -------         PROC          QUET_LED
+  C:088CH         LINE#         15
+  C:088CH         LINE#         16
+  C:088EH         LINE#         17
+  C:0898H         LINE#         18
+  C:089BH         LINE#         19
+  C:089EH         LINE#         20
+  C:08A2H         LINE#         21
+  C:08AFH         LINE#         22
+  C:08B2H         LINE#         23
+  C:08B5H         LINE#         24
+  C:08B7H         LINE#         25
+  C:08C5H         LINE#         26
+  -------         ENDPROC       QUET_LED
+  -------         PROC          NUT_NHAN
+  C:08CCH         LINE#         28
+  C:08CCH         LINE#         29
+  C:08CFH         LINE#         30
+  C:08D1H         LINE#         31
+  C:08DDH         LINE#         32
+  C:08E2H         LINE#         33
+  C:08E5H         LINE#         34
+  C:08E7H         LINE#         35
+  C:08F3H         LINE#         36
+  C:08F6H         LINE#         37
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/29/2024  18:11:51  PAGE 3
+
+
+  C:08F6H         LINE#         38
+  -------         ENDPROC       NUT_NHAN
+  -------         PROC          MAIN
+  C:0941H         LINE#         39
+  C:0941H         LINE#         40
+  C:0948H         LINE#         41
+  C:0948H         LINE#         42
+  C:094BH         LINE#         43
+  C:094EH         LINE#         44
+  C:0950H         LINE#         46
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        7SEG_BUTTON
+
+  -------         MODULE        ?C?SCDIV
+  C:091FH         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00B0H BYTE ( 8%) *
+******************************************************************************
+
+Program Size: data=22.0 xdata=0 code=354
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

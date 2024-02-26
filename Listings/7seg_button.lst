@@ -1,0 +1,73 @@
+C51 COMPILER V9.60.7.0   7SEG_BUTTON                                                       01/29/2024 18:11:49 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE 7SEG_BUTTON
+OBJECT MODULE PLACED IN .\Objects\7seg_button.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 7seg_button.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\7seg_button.lst) TABS(2) OBJECT(.\Objects\7seg_button.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #define DOUT  P2      //Chan xuat data led 7
+   3          #define D1    P3_0    //Quet LED so 1
+   4          #define D2    P3_1    //Quet LED so 2
+   5          #define UP    P3_6    //Nut nhan UP
+   6          #define DOWN  P3_7    //Nut nhan DOWN
+   7          unsigned char Mang[10]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};//Mang LED 7
+   8          char a,b;
+   9          unsigned char dem;
+  10          /////////////////////
+  11          void delay(unsigned int t){ //Ham tao tre
+  12   1        unsigned int i,j;
+  13   1        for(i=0;i<t;i++)for(j=0;j<100;j++);
+  14   1      }
+  15          void quet_led(){//Ham quet 4 LED 7
+  16   1        D1=0; //Led so 1 sang
+  17   1        DOUT=Mang[a/10];//Xuat data gtri hang chuc cua bien a
+  18   1        delay(1);//Tao tre 
+  19   1        DOUT=0xff;//Ngat data (tat bong mo voi led don xep thanh led 7)
+  20   1        D1=1;D2=0; //Led so 1 tat, led 2 sang
+  21   1        DOUT=Mang[a%10];//Xuat data gtri hang don vi cua bien a
+  22   1        delay(1);
+  23   1        DOUT=0xff;
+  24   1        D2=1; //Led so 2 tat, led 3 sang
+  25   1        DOUT=Mang[b/10];//Xuat data gtri hang chuc cua bien b
+  26   1        delay(1);
+  27   1      }
+  28          void nut_nhan(){//Ham scan nut nhan
+  29   1        if(!UP){//Nut UP dc nhan
+  30   2          a++;//Tang gia tri
+  31   2          if(a>99)a=0;//Set ve 0 khi a>99
+  32   2          while(!UP);//Cho nha phim
+  33   2        }else if(!DOWN){//Nut DOWN dc nhan
+  34   2          a--;//Giam gia tri
+  35   2          if(a<0)a=99;//Set ve 99 khi a<0
+  36   2          while(!DOWN);//Cho nha phim
+  37   2        }
+  38   1      }
+  39          void main(){//Ctr chinh
+  40   1        delay(500);
+  41   1        while(1){//Vong lap ctr
+  42   2          nut_nhan();//Scan nut nhan
+  43   2          quet_led();//Scan LED 7
+  44   2          dem++;//Dem tu tang
+  45   2          
+  46   2        }
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    164    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   7SEG_BUTTON                                                       01/29/2024 18:11:49 PAGE 2   
+
+   DATA SIZE        =     13    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
